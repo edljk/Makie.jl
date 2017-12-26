@@ -100,8 +100,9 @@ function _meshscatter(scene, kw_args)
     gl_data = mesh2glvisualize(attributes)
     shape = to_signal(attributes[:marker])
     main = (shape, to_signal(attributes[:positions]))
-    viz = GLVisualize.meshparticle(main, Style(:default), gl_data)
-    viz = GLVisualize.assemble_shader(viz).children[]
+    #viz = GLVisualize.meshparticle(main, Style(:default), gl_data)
+    #viz = GLVisualize.assemble_shader(viz).children[]
+    viz = visualize(main, Style(:default), gl_data).children[]
     insert_scene!(scene, :meshscatter, viz, attributes)
 end
 
