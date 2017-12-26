@@ -7,6 +7,9 @@ function to_modelmatrix(b, scale, offset, rotation)
     end
 end
 
+function to_static_vec(backend, x::Main.GLVisualize.Lighting)
+    value(x)
+end
 @default function shared(scene, kw_args)
     visible = to_bool(visible)
     scale = to_scale(scale)
@@ -16,6 +19,7 @@ end
     camera = to_camera(camera)
     show = to_bool(show)
     light = to_static_vec(light)
+    lighting = to_static_vec(lighting)
 end
 
 

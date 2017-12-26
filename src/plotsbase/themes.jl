@@ -69,7 +69,7 @@ function default_theme(scene)
     gridthickness = ntuple(x-> 1f0, 3)
     colors = UniqueColorIter(:Set1)
     meshrotation = Vec4f0(0, 0, 0, 1)
-    light = Vec3f0[Vec3f0(1.0,1.0,1.0), Vec3f0(0.1,0.1,0.1), Vec3f0(0.9,0.9,0.9), Vec3f0(20,20,20)]
+    _default_light = Vec3f0[Vec3f0(1.0, 1.0, 1.0), Vec3f0(20, 20, 20)]
     @theme theme = begin
 
         rotation = to_rotation(Vec4f0(0, 0, 0, 1))
@@ -80,7 +80,9 @@ function default_theme(scene)
         visible = to_bool(true)
         show = to_bool(true)
 
-        light = to_static_vec(light)
+        light = to_static_vec(_default_light)
+        lighting = to_static_vec(GLVisualize.Lighting([_default_light[end], Vec3f0(-[_default_light[end]...])],
+                                                      [Vec3f0(1), Vec3f0(0.4)]))
 
         drawover = to_bool(false)
 
